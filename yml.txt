@@ -1,0 +1,26 @@
+name: Merge dev to prod
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Merge dev to prod
+      run: |
+        git checkout prod
+        git merge dev
+
+    - name: Push changes
+      uses: ad-m/github-push-action@v1
+      with:
+        branch: prod
+        force: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
