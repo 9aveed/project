@@ -4,7 +4,7 @@ on:
 push:
 branches: [ DEV ]
 pull_request:
-branches: [ DEV ]
+branch
 
 jobs:
 build:
