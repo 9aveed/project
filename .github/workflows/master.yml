@@ -1,29 +1,31 @@
-name: Merge DEV into PROD
+
 
 on:
   push:
     branches:
-      - DEV
+      - dev
 
 jobs:
-  build:
+  merge:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-       
-       with:
-       ref main:
+      with:
+        ref: dev
 
-    - name: Test changes
+    - name: Fetch origin
       run: |
-        echo "Running tests"
-        # Run tests here
+        git remote set-url origin https://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.git
+        git fetch origin
 
-    - name: Merge  to PROD
-   
+    - name: Checkout prod branch
       run: |
-        git checkout PROD
-        git merge DEV
-        git push origin RROD
+        git checkout prod
+        git pull origin prod
+
+    - name: Merge dev into prod
+      run: |
+        git merge dev
+        git push origin prod
