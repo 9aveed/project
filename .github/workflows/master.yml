@@ -17,7 +17,7 @@ jobs:
 
     - name: Fetch origin
       run: |
-        git remote set-url origin https://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.git
+        git remote set-url origin https://github.com 9aveed/project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.git
         git fetch origin
 
     - name: Checkout prod branch
