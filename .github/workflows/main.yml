@@ -11,14 +11,14 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkit
 
     - name: Test changes
       run: |
         echo "Running tests"
         # Run tests here
 
-    - name: Merge dev into prod
+    - name: Merge  DEV into PROD
       if: success()
       run: |
         git checkout PROD
