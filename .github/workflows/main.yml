@@ -19,7 +19,7 @@ jobs:
         # Run tests here
 
     - name: Merge  DEV into PROD
-      if: success()
+   
       run: |
         git checkout PROD
         git merge DEV
